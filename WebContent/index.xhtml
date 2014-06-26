@@ -1,0 +1,38 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+<link href="css/style.css" type="text/css" rel="stylesheet" />
+<title>BancoWS</title>
+</h:head>
+
+<h:body>	
+	<div class="content">
+		<h1>Seja bem Vindo ao BancoWS!</h1>
+		<div class="bt-content">
+			<h:form>			
+				<p:growl id="growl" life="2000" />
+			
+				<p:inputText placeholder="Numero da Conta" value="#{indexView.numeroConta}" styleClass="bt-left bt-right" />
+				<p:inputText placeholder="Valor" value="#{indexView.valor}" styleClass="bt-right" />
+				
+				<hr />
+				    
+			   <p:commandButton value="Deposito" id="dep" actionListener="#{indexView.deposito}" styleClass="bt-top bt-left bt-right bt-bottom" ajax="false" />
+			   
+			   <p:commandButton value="Saque" styleClass="bt-top bt-right bt-bottom" id="saq" actionListener="#{indexView.saque}" ajax="false" />
+			
+			   <p:commandButton value="Extrato" styleClass="bt-bottom bt-left bt-right" id="ext" actionListener="#{indexView.criaConta}" ajax="false" />
+			   
+			   <p:commandButton value="Saldo" styleClass="bt-bottom bt-right" id="sald" actionListener="#{indexView.saldo}" ajax="false" />
+			</h:form>
+		</div>
+		<p:commandLink id="ajax" actionListener="#{indexView.criaContas}">
+	        <h:outputText value="Criar contas..." />
+	    </p:commandLink>
+	</div>
+
+</h:body>
+</html>

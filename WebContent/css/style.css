@@ -1,0 +1,63 @@
+/* CSS BancoWS
+* Autoras Leticia, Susieli
+* Versao 1.0
+* Data 	20/06/2014
+*/
+
+body{
+	font-family: "Trebuche MS", sans-serif;
+	background-color: #F2F2F2; 
+}
+
+h1 {
+    text-align: center;
+    color: #FFFFFF;
+    margin: 30px;
+}
+
+hr{
+	color: #FFFFFF;
+}
+
+.content{
+	background: #045893;
+	margin: 100px auto 0;
+	width: 500px;
+	padding-top: 20px;
+}
+
+.bt-content{
+	margin: auto;
+	width: 475px;
+}
+
+.ui-button, .ui-widget, .ui-state-default, .ui-corner-all, .ui-button-text-only, .ui-priority-primary{
+	background: #FFFFFF;
+	border: none;
+	border-radius: 0px;
+	color: #045893;
+	height: 50px;
+	width: 200px; 
+}
+
+.ui-inputfield, .ui-inputtext{
+	height: 30px;
+	width: 200px;
+	font-size: 12px;
+}
+
+.bt-top{
+	margin-top: 30px;
+}
+
+.bt-bottom{
+	margin-bottom: 30px;
+}
+
+.bt-right{
+	margin-right: 25px;
+}
+
+.bt-left{
+	margin-left: 25px;
+}
