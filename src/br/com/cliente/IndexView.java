@@ -1,15 +1,21 @@
 package br.com.cliente;
 
+import java.util.ArrayList;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+
+import br.com.banco.Transacao;
+import br.com.banco.TransacaoArray;
  
 @ManagedBean
 public class IndexView {
 	
 	String numeroConta;
 	String valor;
+	TransacaoArray extrato;
 	 
     public void deposito(ActionEvent actionEvent) {
     	
@@ -28,24 +34,32 @@ public class IndexView {
     	int n = Integer.valueOf( numeroConta );
     	double v = Double.valueOf( valor );
     	
-    	if(Banco.deposito( n, v )){
+    	if(Banco.saque( n, v )){
     		addMessage( "Sacado" );
     	}else{
     		addMessage( "Erro =/" );
     	}
     }
     
-    public void criaConta( int nConta, double valor ) {
+    public void saldo(ActionEvent actionEvent) {
+    	addMessage( "Saldo: " + Banco.saldo( Integer.valueOf( numeroConta ) ).getSaldo() );
+    }
+    
+    public void extrato(ActionEvent actionEvent) {
+    	extrato = Banco.Extrato( Integer.valueOf( numeroConta ) );
+    	System.out.println( numeroConta );
+    	for ( Transacao t : extrato.getItem() ) {
+			System.out.println( t.getConta().getNumeroConta() );
+		}
+    }
+    
+    private void criaConta( int nConta, double valor ) {
     	
     	if(Banco.criaConta( nConta, valor )){
     		addMessage( "Criado" );
     	}else{
     		addMessage( "Erro =(" );
     	}
-    }
-    
-    public void saldo(ActionEvent actionEvent) {
-    	addMessage( "Saldo: " + Banco.saldo( Integer.valueOf( numeroConta ) ).getSaldo() );
     }
     
     public void criaContas(ActionEvent actionEvent) {
@@ -75,5 +89,13 @@ public class IndexView {
 	
 	public void setValor( String valor ) {
 		this.valor = valor;
+	}
+
+	public TransacaoArray getExtrato() {
+		return extrato;
+	}
+
+	public void setExtrato( TransacaoArray extrato ) {
+		this.extrato = extrato;
 	}
 }

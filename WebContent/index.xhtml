@@ -1,7 +1,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
 <link href="css/style.css" type="text/css" rel="stylesheet" />
@@ -24,7 +25,7 @@
 			   
 			   <p:commandButton value="Saque" styleClass="bt-top bt-right bt-bottom" id="saq" actionListener="#{indexView.saque}" ajax="false" />
 			
-			   <p:commandButton value="Extrato" styleClass="bt-bottom bt-left bt-right" id="ext" actionListener="#{indexView.criaConta}" ajax="false" />
+			   <p:commandButton value="Extrato" styleClass="bt-bottom bt-left bt-right" id="ext" actionListener="#{indexView.extrato}" ajax="false" />
 			   
 			   <p:commandButton value="Saldo" styleClass="bt-bottom bt-right" id="sald" actionListener="#{indexView.saldo}" ajax="false" />
 			</h:form>
@@ -34,5 +35,20 @@
 	    </p:commandLink>
 	</div>
 
+	<table>
+		<tr>
+	   		<th>Numero da Conta -</th>
+	   		<th>Saldo Anterior -</th>
+	   		<th>Saldo</th>
+	   </tr>
+		<ui:repeat value="#{indexView.extrato.item}" var="transacao">
+		   <tr>
+		   		<td><h:outputText value="${transacao.conta.numeroConta}"/></td>
+		   		<td><h:outputText value="${transacao.saldoAnterior}"/></td>
+		   		<td><h:outputText value="${transacao.saldo}"/></td>
+		   </tr>
+		</ui:repeat>
+	</table>
+	
 </h:body>
 </html>

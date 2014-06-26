@@ -67,7 +67,7 @@ public class Banco {
 		try {
 			BancoWebServiceImplService bwsService = new BancoWebServiceImplService();
 			BancoWebService bws = bwsService.getBancoWebServiceImplPort();
-			
+			System.out.println( "Ban - " + nConta );
 			return bws.extrato( nConta );
 		} catch( Exception e ) {
 			
